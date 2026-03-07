@@ -3,8 +3,8 @@ use tokio::net::TcpListener;
 use tokio::io::{AsyncWriteExt, AsyncReadExt};
 
 pub async fn run_coordinator() -> tokio::io::Result<()> {
-	let listener = TcpListener::bind("10.10.10.1:8080").await?;
-	println!("Coordinador escuchando en 10.10.10.1:8080");
+	let listener = TcpListener::bind("0.0.0.0:8080").await?;
+	println!("Coordinador escuchando en todos lados");
 
 	loop {
 		let (mut socket, _) = listener.accept().await?;
