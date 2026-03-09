@@ -1,0 +1,76 @@
+version: "3.8"
+
+services:
+  coordinator:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    command: ./algoritmo_distribuido
+    networks:
+      - distnet
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - ./output:/output   # <--- Cambiado: monta en /output, no en /usr/src/app
+    environment:
+      - RUST_LOG=info
+
+  worker1:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    command: ./algoritmo_distribuido worker
+    networks:
+      - distnet
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - WORKER_ID=1
+    depends_on:
+      - coordinator
+
+  worker2:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    command: ./algoritmo_distribuido worker
+    networks:
+      - distnet
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - WORKER_ID=2
+    depends_on:
+      - coordinator
+
+  worker3:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    command: ./algoritmo_distribuido worker
+    networks:
+      - distnet
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - WORKER_ID=3
+    depends_on:
+      - coordinator
+
+  worker4:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    command: ./algoritmo_distribuido worker
+    networks:
+      - distnet
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - WORKER_ID=4
+    depends_on:
+      - coordinator
+
+networks:
+  distnet:
+    driver: bridge
