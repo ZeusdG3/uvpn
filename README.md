@@ -1,6 +1,6 @@
 # Sistema Distribuido en Rust
 
-Este proyecto implementa un sistema distribuido con un **coordinador** y varios **workers** conectados a una **VPN** usando Docker y Docker Compose.
+Este proyecto implementa un sistema distribuido con un **coordinador** y varios **workers** conectados en distnet usando Docker y Docker Compose.
 El coordinador asigna tareas (`Task`) a los workers, quienes devuelven resultados (`ResultMsg`).
 
 ## Requisitos
@@ -9,8 +9,6 @@ El coordinador asigna tareas (`Task`) a los workers, quienes devuelven resultado
 - Docker >= 24.x
 - Docker Compose v2
 - Rust (para desarrollo local, opcional)
-  
-- PENDIENTE REQUISITOS VPN
 
 ## Compilación y construcción
 
