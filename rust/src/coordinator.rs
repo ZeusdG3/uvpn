@@ -16,9 +16,9 @@ const MAX_ITER: u32 = 500;
 const SUPERSAMPLING: u32 = 1;
 
 // Región a renderizar
-const CENTER_RE: f64 = -1.380584716796875;
-const CENTER_IM: f64 = -0.015289306640625;
-const ZOOM: f64 = 11.0;
+const CENTER_RE: f64 = -0.4049987;
+const CENTER_IM: f64 = -0.5903320;
+const ZOOM: f64 = 10.0;
 const FULL_WIDTH: f64 = 3.0;
 
 pub async fn run_coordinator() -> tokio::io::Result<()> {

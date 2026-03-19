@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  coordinator:
+    image: algoritmo_distribuido
+    container_name: coordinator
+    network_mode: host
+    volumes:
+      - ./output:/output
+    restart: unless-stopped

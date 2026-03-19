@@ -34,8 +34,11 @@ pub async fn run_worker() -> tokio::io::Result<()> {
 }
 
 async fn connect_and_work() -> tokio::io::Result<()> {
-    let mut stream = TcpStream::connect("coordinator:8080").await?;
-    println!("Worker conectado al coordinador");
+    // Definimos la direccion IP del coordinador en la VPN, si no hay, el default es local.
+    let coordinator_addr = std::env::var("COORDINATOR_ADDR").
+    unwrap_or_else(|_| "coordinator:8080".to_string());
+    println!("Worker conectado al coordinador en {}", coordinator_addr);
+    let mut stream = TcpStream::connect(&coordinator_addr).await?;
 
     let (reader, mut writer) = stream.split();
     let mut reader = BufReader::new(reader);

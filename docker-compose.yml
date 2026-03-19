@@ -11,7 +11,7 @@ services:
     cap_add:
       - NET_ADMIN
     volumes:
-      - ./output:/output  
+      - ./output:/output
     environment:
       - RUST_LOG=info
 

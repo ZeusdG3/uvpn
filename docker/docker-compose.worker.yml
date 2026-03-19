@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  worker:
+    image: algoritmo_distribuido
+    command: ["./algoritmo_distribuido", "worker"]
+    environment:
+      - COORDINATOR_ADDR=${COORDINATOR_ADDR:-10.165.168.1:8080}
+    restart: unless-stopped
